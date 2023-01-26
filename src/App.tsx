@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import {useEffect} from 'react';
 
 function App() {
@@ -7,12 +7,19 @@ function App() {
 
   const [users,setUsers] = useState< [] | null>(null);
   
-  
- console.log('i am 2 Seeing tou')
+  useEffect(()=>{
+    console.log('Mounting');
+    
+  },[users]);
+ console.log('i am 2 Seeing tou')  
+
+ //Callback
+const addTwo = useCallback(()=>setCount(prev=>prev+1),[]);
+
   return (
     <div className="App">
-    <h1> Hello Mom 👩 </h1>
-    
+    <h1> Hello Mom 👩</h1>
+    <button onClick={addTwo}>Add</button>
     </div>
   )
 }
